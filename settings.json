@@ -22,7 +22,8 @@
     "npm:pi-mcp-adapter",
     "npm:@plannotator/pi-extension",
     "npm:pi-btw",
-    "npm:pi-sync-config"
+    "npm:pi-sync-config",
+    "npm:pi-ssh"
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",

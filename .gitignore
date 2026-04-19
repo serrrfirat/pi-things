@@ -1,0 +1,15 @@
+# Secrets & credentials — never sync these
+auth.json
+
+# Runtime / machine-local state
+sessions/
+git/
+npm/
+bin/
+sync-repo/
+pi-sync.json
+*.log
+
+# User context files (may contain sensitive business logic)
+AGENTS.md
+CLAUDE.md

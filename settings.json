@@ -1,0 +1,34 @@
+{
+  "packages": [
+    "npm:pi-ask-user",
+    "npm:oh-pi",
+    "npm:pi-subagents",
+    "npm:pi-markdown-preview",
+    "npm:@juanibiapina/pi-extension-settings",
+    "npm:@guwidoe/pi-prompt-suggester",
+    "npm:pi-extmgr",
+    "npm:pi-librarian",
+    "npm:pi-web-access",
+    "npm:pi-interview",
+    {
+      "source": "git:https://github.com/hasit/pi-community-themes",
+      "themes": [
+        "themes/*.json",
+        "!themes/catppuccin-mocha.json",
+        "!themes/nord.json"
+      ]
+    },
+    "npm:taskplane",
+    "npm:pi-mcp-adapter",
+    "npm:@plannotator/pi-extension",
+    "npm:pi-btw",
+    "npm:pi-sync-config"
+  ],
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.4",
+  "defaultThinkingLevel": "xhigh",
+  "theme": "dark",
+  "quietStartup": false,
+  "transport": "auto",
+  "hideThinkingBlock": false
+}

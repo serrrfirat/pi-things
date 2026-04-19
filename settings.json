@@ -1,7 +1,12 @@
 {
   "packages": [
     "npm:pi-ask-user",
-    "npm:oh-pi",
+    {
+      "source": "npm:oh-pi",
+      "extensions": [
+        "-pi-package/extensions/bg-process.ts"
+      ]
+    },
     "npm:pi-subagents",
     "npm:pi-markdown-preview",
     "npm:@juanibiapina/pi-extension-settings",

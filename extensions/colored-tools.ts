@@ -11,14 +11,7 @@
  */
 
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-import {
-	createEditTool,
-	createFindTool,
-	createGrepTool,
-	createLsTool,
-	createReadTool,
-	createWriteTool,
-} from "@mariozechner/pi-coding-agent";
+import { createFindTool, createGrepTool, createLsTool } from "@mariozechner/pi-coding-agent";
 import { Text } from "@mariozechner/pi-tui";
 import { homedir } from "node:os";
 
@@ -28,9 +21,6 @@ const toolCache = new Map<string, BuiltInTools>();
 
 function createBuiltInTools(cwd: string) {
 	return {
-		read: createReadTool(cwd),
-		edit: createEditTool(cwd),
-		write: createWriteTool(cwd),
 		grep: createGrepTool(cwd),
 		find: createFindTool(cwd),
 		ls: createLsTool(cwd),
@@ -56,60 +46,10 @@ function shortenPath(path?: string): string {
 export default function coloredTools(pi: ExtensionAPI) {
 	const baseTools = getBuiltInTools(process.cwd());
 
-	pi.registerTool({
-		...baseTools.read,
-		renderCall(args, theme) {
-			const path = theme.fg("accent", shortenPath(args.path));
-			let text = theme.fg("mdLink", theme.bold("📖 read")) + " " + path;
-			if (args.offset !== undefined || args.limit !== undefined) {
-				const start = args.offset ?? 1;
-				const end = args.limit !== undefined ? start + args.limit - 1 : undefined;
-				text += theme.fg("warning", `:${start}${end !== undefined ? `-${end}` : ""}`);
-			}
-			return new Text(text, 0, 0);
-		},
-		async execute(toolCallId, params, signal, onUpdate, ctx) {
-			return getBuiltInTools(ctx.cwd).read.execute(toolCallId, params, signal, onUpdate);
-		},
-	});
-
-	// Intentionally do not override `bash` here.
-	// Packages like oh-pi's bg-process extension also override bash, and pi
-	// treats extension-vs-extension tool name collisions as errors.
-	// If you want colored bash headers too, add the rendering to the owning
-	// bash extension rather than registering another bash tool here.
-
-	pi.registerTool({
-		...baseTools.edit,
-		renderCall(args, theme) {
-			const path = theme.fg("accent", shortenPath(args.path));
-			const editCount = Array.isArray(args.edits) ? args.edits.length : 0;
-			let text = theme.fg("warning", theme.bold("✂️ edit")) + " " + path;
-			if (editCount > 0) {
-				text += theme.fg("dim", ` (${editCount} block${editCount === 1 ? "" : "s"})`);
-			}
-			return new Text(text, 0, 0);
-		},
-		async execute(toolCallId, params, signal, onUpdate, ctx) {
-			return getBuiltInTools(ctx.cwd).edit.execute(toolCallId, params, signal, onUpdate);
-		},
-	});
-
-	pi.registerTool({
-		...baseTools.write,
-		renderCall(args, theme) {
-			const path = theme.fg("accent", shortenPath(args.path));
-			const lineCount = typeof args.content === "string" ? args.content.split("\n").length : 0;
-			let text = theme.fg("success", theme.bold("📝 write")) + " " + path;
-			if (lineCount > 0) {
-				text += theme.fg("dim", ` (${lineCount} line${lineCount === 1 ? "" : "s"})`);
-			}
-			return new Text(text, 0, 0);
-		},
-		async execute(toolCallId, params, signal, onUpdate, ctx) {
-			return getBuiltInTools(ctx.cwd).write.execute(toolCallId, params, signal, onUpdate);
-		},
-	});
+	// Intentionally do not override `read`, `write`, `edit`, or `bash` here.
+	// Packages like pi-ssh and oh-pi/bg-process own those tool names, and pi
+	// treats extension-vs-extension collisions as load errors.
+	// Keep this extension focused on the non-conflicting read-only helpers.
 
 	pi.registerTool({
 		...baseTools.grep,

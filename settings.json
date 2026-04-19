@@ -36,5 +36,5 @@
   "theme": "dark",
   "quietStartup": false,
   "transport": "auto",
-  "hideThinkingBlock": false
+  "hideThinkingBlock": true
 }

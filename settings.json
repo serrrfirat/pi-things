@@ -28,7 +28,8 @@
     "npm:@plannotator/pi-extension",
     "npm:pi-btw",
     "npm:pi-sync-config",
-    "npm:pi-ssh"
+    "npm:pi-ssh",
+    "git:https://github.com/fluxgear/pi-thinking-steps@v0.9.6"
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",

@@ -30,8 +30,8 @@
     "npm:pi-sync-config",
     "npm:pi-ssh"
   ],
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-4-6",
   "defaultThinkingLevel": "xhigh",
   "theme": "dark",
   "quietStartup": false,

@@ -74,7 +74,7 @@
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",
   "defaultThinkingLevel": "xhigh",
-  "theme": "twilight",
+  "theme": "xcode-dark-hc",
   "quietStartup": false,
   "transport": "auto",
   "hideThinkingBlock": true,

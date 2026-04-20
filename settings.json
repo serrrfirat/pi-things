@@ -38,7 +38,8 @@
     "npm:pi-add-dir",
     "npm:@juanibiapina/pi-powerbar",
     "npm:@tmustier/pi-usage-extension",
-    "npm:@tmustier/pi-raw-paste"
+    "npm:@tmustier/pi-raw-paste",
+    "git:github.com/tintinweb/pi-manage-todo-list@b75c449aa85ce328e9a8b632f62bf642aed40359"
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",

@@ -31,7 +31,8 @@
     "npm:pi-ssh",
     "git:https://github.com/fluxgear/pi-thinking-steps@v0.9.6",
     "npm:@ff-labs/pi-fff",
-    "npm:pi-memory-md"
+    "npm:pi-memory-md",
+    "git:github.com/badlogic/pi-diff-review@1584211692c49780ecd0f490a82762b0823fd475"
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",

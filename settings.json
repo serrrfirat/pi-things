@@ -30,7 +30,8 @@
     "npm:pi-sync-config",
     "npm:pi-ssh",
     "git:https://github.com/fluxgear/pi-thinking-steps@v0.9.6",
-    "npm:@ff-labs/pi-fff"
+    "npm:@ff-labs/pi-fff",
+    "npm:pi-memory-md"
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",

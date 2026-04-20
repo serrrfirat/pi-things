@@ -43,7 +43,8 @@
     "git:github.com/davebcn87/pi-autoresearch@5a29db080131449edc6d25a6b351b12879063366",
     "npm:@tmustier/pi-ralph-wiggum",
     "npm:@every-env/compound-plugin",
-    "npm:pi-themes"
+    "npm:pi-themes",
+    "git:github.com/javierportillo/pi-hackerman@63b0a3ef2c7b14985ffeb6cac44614ba59cd5693"
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",

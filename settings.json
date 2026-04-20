@@ -4,7 +4,8 @@
     {
       "source": "npm:oh-pi",
       "extensions": [
-        "-pi-package/extensions/bg-process.ts"
+        "-pi-package/extensions/bg-process.ts",
+        "-pi-package/extensions/ant-colony"
       ]
     },
     "npm:pi-subagents",
@@ -21,6 +22,20 @@
         "themes/*.json",
         "!themes/catppuccin-mocha.json",
         "!themes/nord.json"
+      ]
+    },
+    {
+      "source": "npm:pi-themes",
+      "themes": [
+        "themes/*.json",
+        "!themes/catppuccin-latte.json",
+        "!themes/catppuccin-mocha.json",
+        "!themes/dracula.json",
+        "!themes/gruvbox-dark.json",
+        "!themes/nord.json",
+        "!themes/solarized-dark.json",
+        "!themes/solarized-light.json",
+        "!themes/tokyo-night.json"
       ]
     },
     "npm:taskplane",
@@ -43,10 +58,16 @@
     "git:github.com/davebcn87/pi-autoresearch@5a29db080131449edc6d25a6b351b12879063366",
     "npm:@tmustier/pi-ralph-wiggum",
     "npm:@every-env/compound-plugin",
-    "npm:pi-themes",
     "git:github.com/javierportillo/pi-hackerman@63b0a3ef2c7b14985ffeb6cac44614ba59cd5693",
     "npm:pi-cyber-ui",
-    "npm:@victor-software-house/pi-curated-themes",
+    {
+      "source": "npm:@victor-software-house/pi-curated-themes",
+      "themes": [
+        "themes/*.json",
+        "!themes/catppuccin-mocha.json",
+        "!themes/gruvbox-dark-hard.json"
+      ]
+    },
     "npm:pi-terminal-theme"
   ],
   "defaultProvider": "openai-codex",

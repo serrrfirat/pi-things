@@ -35,7 +35,9 @@
     "git:github.com/badlogic/pi-diff-review@1584211692c49780ecd0f490a82762b0823fd475",
     "npm:@devkade/pi-plan",
     "npm:pi-simplify",
-    "npm:pi-add-dir"
+    "npm:pi-add-dir",
+    "npm:@juanibiapina/pi-powerbar",
+    "npm:@tmustier/pi-usage-extension"
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",

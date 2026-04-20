@@ -74,7 +74,7 @@
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",
   "defaultThinkingLevel": "xhigh",
-  "theme": "twilight",
+  "theme": "popping-and-locking",
   "quietStartup": false,
   "transport": "auto",
   "hideThinkingBlock": true,

@@ -68,7 +68,8 @@
         "!themes/gruvbox-dark-hard.json"
       ]
     },
-    "npm:pi-terminal-theme"
+    "npm:pi-terminal-theme",
+    "npm:glimpseui"
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",

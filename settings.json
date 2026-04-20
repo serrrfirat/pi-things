@@ -37,7 +37,8 @@
     "npm:pi-simplify",
     "npm:pi-add-dir",
     "npm:@juanibiapina/pi-powerbar",
-    "npm:@tmustier/pi-usage-extension"
+    "npm:@tmustier/pi-usage-extension",
+    "npm:@tmustier/pi-raw-paste"
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",

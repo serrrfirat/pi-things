@@ -40,7 +40,8 @@
     "npm:@tmustier/pi-usage-extension",
     "npm:@tmustier/pi-raw-paste",
     "git:github.com/tintinweb/pi-manage-todo-list@b75c449aa85ce328e9a8b632f62bf642aed40359",
-    "git:github.com/davebcn87/pi-autoresearch@5a29db080131449edc6d25a6b351b12879063366"
+    "git:github.com/davebcn87/pi-autoresearch@5a29db080131449edc6d25a6b351b12879063366",
+    "npm:@tmustier/pi-ralph-wiggum"
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",

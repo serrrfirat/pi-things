@@ -5,7 +5,7 @@
       "source": "npm:oh-pi",
       "extensions": [
         "-pi-package/extensions/bg-process.ts",
-        "-pi-package/extensions/ant-colony"
+        "-pi-package/extensions/ant-colony/index.ts"
       ]
     },
     "npm:pi-subagents",

@@ -38,5 +38,27 @@
   "theme": "dark",
   "quietStartup": false,
   "transport": "auto",
-  "hideThinkingBlock": true
+  "hideThinkingBlock": true,
+  "subagents": {
+    "agentOverrides": {
+      "context-builder": {
+        "model": ""
+      },
+      "planner": {
+        "model": ""
+      },
+      "researcher": {
+        "model": ""
+      },
+      "reviewer": {
+        "model": ""
+      },
+      "scout": {
+        "model": ""
+      },
+      "worker": {
+        "model": ""
+      }
+    }
+  }
 }

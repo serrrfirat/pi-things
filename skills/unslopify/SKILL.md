@@ -1,6 +1,6 @@
 ---
 name: unslopify
-description: Audit and safely clean code slop in a repository: dead code, stale legacy paths, weak types, circular dependencies, noisy comments, duplicated code, and dishonest error handling. Use when the user asks to clean up a codebase, remove cruft, reduce tech debt, tighten types, or do a careful cleanup pass without broad redesign.
+description: "Audit and safely clean code slop in a repository: dead code, stale legacy paths, weak types, circular dependencies, noisy comments, duplicated code, and dishonest error handling. Use when the user asks to clean up a codebase, remove cruft, reduce tech debt, tighten types, or do a careful cleanup pass without broad redesign."
 ---
 
 # Unslopify

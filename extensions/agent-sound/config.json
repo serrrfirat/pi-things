@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "sounds": {
+    "completion": {
+      "kind": "system",
+      "name": "Glass"
+    },
+    "ask_user": {
+      "kind": "system",
+      "name": "Ping"
+    },
+    "interview": {
+      "kind": "system",
+      "name": "Ping"
+    },
+    "input_request": {
+      "kind": "system",
+      "name": "Ping"
+    }
+  }
+}

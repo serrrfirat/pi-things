@@ -2,12 +2,14 @@
   "version": 2,
   "sounds": {
     "completion": {
-      "kind": "system",
-      "name": "Glass"
+      "kind": "file",
+      "path": "/Users/firatsertgoz/.pi/agent/extensions/agent-sound/cache/youtube-59b4436bf9ae.mp3",
+      "original": "https://www.youtube.com/watch?v=bBCB0y9Mgns"
     },
     "ask_user": {
-      "kind": "system",
-      "name": "Ping"
+      "kind": "file",
+      "path": "/Users/firatsertgoz/.pi/agent/extensions/agent-sound/cache/youtube-0edd19744bc7.mp3",
+      "original": "https://www.youtube.com/watch?v=EX5hcbzZCow"
     },
     "interview": {
       "kind": "system",

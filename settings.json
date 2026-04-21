@@ -69,7 +69,8 @@
       ]
     },
     "npm:pi-terminal-theme",
-    "npm:glimpseui"
+    "npm:glimpseui",
+    "npm:pi-claude-cli"
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",

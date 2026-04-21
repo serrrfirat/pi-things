@@ -1,0 +1,89 @@
+{
+  "version": 3,
+  "skills": {
+    "remotion-best-practices": {
+      "source": "remotion-dev/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/remotion-dev/skills.git",
+      "skillPath": "skills/remotion/SKILL.md",
+      "skillFolderHash": "105ea5fba2890b7582317011ada8c0b94d31bc68",
+      "installedAt": "2026-01-28T19:00:31.155Z",
+      "updatedAt": "2026-01-28T19:00:31.155Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "c2f31172b6f256272305a5e6e7228b258446899f",
+      "installedAt": "2026-01-28T19:00:35.138Z",
+      "updatedAt": "2026-01-28T19:00:35.138Z"
+    },
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-browser.git",
+      "skillPath": "skills/agent-browser/SKILL.md",
+      "skillFolderHash": "055f4a89276ed2c51b335c2e492ce863afb0cf8f",
+      "installedAt": "2026-01-28T19:02:20.296Z",
+      "updatedAt": "2026-01-28T19:02:20.296Z"
+    },
+    "seo-audit": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/coreyhaines31/marketingskills.git",
+      "skillPath": "skills/seo-audit/SKILL.md",
+      "skillFolderHash": "a98fae5eae7cf90e32520fd1144e8c69f26c354c",
+      "installedAt": "2026-01-28T19:02:34.119Z",
+      "updatedAt": "2026-01-28T19:02:34.119Z"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-skills.git",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "skillFolderHash": "079b06a135401704ea94ab74c7c9d86c92ba259f",
+      "installedAt": "2026-01-28T19:02:44.083Z",
+      "updatedAt": "2026-01-28T19:02:44.083Z"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "skillFolderHash": "986c64ad9b8e196a4a737c01872c2eda790daba1",
+      "installedAt": "2026-01-28T19:04:15.515Z",
+      "updatedAt": "2026-01-28T19:04:15.515Z"
+    },
+    "building-native-ui": {
+      "source": "expo/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/expo/skills.git",
+      "skillPath": "plugins/expo-app-design/skills/building-native-ui/SKILL.md",
+      "skillFolderHash": "9e899e3ea35aecf476bbd1b1f440025b66712d46",
+      "installedAt": "2026-01-28T19:05:27.748Z",
+      "updatedAt": "2026-01-28T19:05:27.748Z"
+    },
+    "browser-use": {
+      "source": "browser-use/browser-use",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/browser-use/browser-use.git",
+      "skillPath": "skills/browser-use/SKILL.md",
+      "skillFolderHash": "df0edcf7c9ea84445701544ab0f2c05cc16c00b2",
+      "installedAt": "2026-01-28T19:07:17.809Z",
+      "updatedAt": "2026-01-28T19:07:17.809Z"
+    },
+    "superdesign": {
+      "source": "superdesigndev/superdesign-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/superdesigndev/superdesign-skill.git",
+      "skillPath": "skills/superdesign/SKILL.md",
+      "skillFolderHash": "7b492b95217dab208164bfc1f792fc5031f56586",
+      "installedAt": "2026-01-28T19:09:38.572Z",
+      "updatedAt": "2026-01-28T19:09:38.572Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  }
+}

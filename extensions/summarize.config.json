@@ -1,0 +1,9 @@
+{
+  "provider": "openai-codex",
+  "model": "gpt-5.4-mini",
+  "maxTokens": 600,
+  "temperature": 0.3,
+  "maxTurns": 40,
+  "refreshTopicEveryNTurns": 3,
+  "enableTopicBadge": true
+}

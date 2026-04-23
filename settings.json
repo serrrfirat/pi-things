@@ -1,4 +1,7 @@
 {
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.4",
+  "defaultThinkingLevel": "high",
   "packages": [
     "npm:pi-ask-user",
     {
@@ -45,9 +48,7 @@
     "npm:pi-sync-config",
     "npm:pi-ssh",
     "git:https://github.com/fluxgear/pi-thinking-steps@v0.9.6",
-    "npm:@ff-labs/pi-fff",
     "npm:pi-memory-md",
-    "git:github.com/badlogic/pi-diff-review@1584211692c49780ecd0f490a82762b0823fd475",
     "npm:@devkade/pi-plan",
     "npm:pi-simplify",
     "npm:pi-add-dir",
@@ -59,7 +60,6 @@
     "npm:@tmustier/pi-ralph-wiggum",
     "npm:@every-env/compound-plugin",
     "git:github.com/javierportillo/pi-hackerman@63b0a3ef2c7b14985ffeb6cac44614ba59cd5693",
-    "npm:pi-cyber-ui",
     {
       "source": "npm:@victor-software-house/pi-curated-themes",
       "themes": [
@@ -70,15 +70,21 @@
     },
     "npm:pi-terminal-theme",
     "npm:glimpseui",
-    "npm:pi-claude-cli"
+    "npm:pi-claude-cli",
+    "npm:pi-tool-display",
+    "npm:@tintinweb/pi-tasks",
+    "npm:@zenobius/pi-worktrees",
+    "npm:pi-claude-bridge",
+    "npm:pi-free",
+    "npm:pi-mono-clear",
+    "npm:pi-intercom",
+    "npm:@alchemiststudios/pi-harness-skills",
+    "npm:@weiping/pi-superpowers"
   ],
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4",
-  "defaultThinkingLevel": "xhigh",
-  "theme": "sea-shells",
+  "theme": "smyck",
   "quietStartup": false,
   "transport": "auto",
-  "hideThinkingBlock": true,
+  "hideThinkingBlock": false,
   "subagents": {
     "agentOverrides": {
       "context-builder": {
@@ -103,5 +109,17 @@
   },
   "compaction": {
     "enabled": true
+  },
+  "enableSkillCommands": true,
+  "pi-memory-md": {
+    "enabled": true,
+    "repoUrl": "git@github.com:serrrfirat/pi-memory.git",
+    "localPath": "~/.pi/memory-md",
+    "hooks": {
+      "sessionStart": [
+        "pull"
+      ],
+      "sessionEnd": []
+    }
   }
 }

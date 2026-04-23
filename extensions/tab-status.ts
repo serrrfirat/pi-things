@@ -1,5 +1,5 @@
 /**
- * Update the terminal tab title with Pi run status (:new/:running/:✅/:🚧/:🛑).
+ * Update the terminal tab title with Pi run status and the latest user prompt.
  */
 import type {
 	ExtensionAPI,
@@ -13,10 +13,24 @@ import type {
 	ToolCallEvent,
 	ToolResultEvent,
 	SessionShutdownEvent,
+	MessageStartEvent,
 } from "@mariozechner/pi-coding-agent";
 import type { AgentMessage } from "@mariozechner/pi-agent-core";
 import type { AssistantMessage, StopReason } from "@mariozechner/pi-ai";
 import { basename } from "node:path";
+
+type SessionEntry = {
+	type: string;
+	message?: {
+		role?: string;
+		content?: unknown;
+	};
+};
+
+type ContentBlock = {
+	type?: string;
+	text?: string;
+};
 
 type StatusState = "new" | "running" | "doneCommitted" | "doneNoCommit" | "timeout";
 
@@ -24,6 +38,7 @@ type StatusTracker = {
 	state: StatusState;
 	running: boolean;
 	sawCommit: boolean;
+	latestPrompt?: string;
 };
 
 const STATUS_TEXT: Record<StatusState, string> = {
@@ -36,22 +51,90 @@ const STATUS_TEXT: Record<StatusState, string> = {
 
 const INACTIVE_TIMEOUT_MS = 180_000;
 const GIT_COMMIT_RE = /\bgit\b[^\n]*\bcommit\b/;
+const MAX_PROMPT_CHARS = 72;
+
+function extractText(content: unknown): string {
+	if (typeof content === "string") {
+		return content.trim();
+	}
+
+	if (!Array.isArray(content)) {
+		return "";
+	}
+
+	const parts: string[] = [];
+	for (const part of content) {
+		if (!part || typeof part !== "object") {
+			continue;
+		}
+
+		const block = part as ContentBlock;
+		if (block.type === "text" && typeof block.text === "string") {
+			parts.push(block.text);
+		}
+	}
+
+	return parts.join("\n").trim();
+}
+
+function normalize(text: string): string {
+	return text.replace(/\s+/g, " ").trim();
+}
+
+function truncate(text: string, maxChars: number): string {
+	return text.length <= maxChars ? text : `${text.slice(0, maxChars - 1)}…`;
+}
+
+function getLatestUserPrompt(entries: SessionEntry[]): string | undefined {
+	for (let i = entries.length - 1; i >= 0; i -= 1) {
+		const entry = entries[i];
+		if (entry.type !== "message" || entry.message?.role !== "user") {
+			continue;
+		}
+
+		const text = extractText(entry.message.content);
+		if (text) {
+			return text;
+		}
+	}
+
+	return undefined;
+}
 
 export default function (pi: ExtensionAPI) {
 	const status: StatusTracker = {
 		state: "new",
 		running: false,
 		sawCommit: false,
+		latestPrompt: undefined,
 	};
 	let timeoutId: ReturnType<typeof setTimeout> | undefined;
 	const nativeClearTimeout = globalThis.clearTimeout;
 
 	const cwdBase = (ctx: ExtensionContext): string => basename(ctx.cwd || "pi");
 
+	const baseTitle = (ctx: ExtensionContext): string => {
+		const session = pi.getSessionName()?.trim();
+		return session ? `π - ${session} - ${cwdBase(ctx)}` : `π - ${cwdBase(ctx)}`;
+	};
+
+	const promptSuffix = (): string => {
+		const prompt = status.latestPrompt ? normalize(status.latestPrompt) : "";
+		return prompt ? ` — ${truncate(prompt, MAX_PROMPT_CHARS)}` : "";
+	};
+
+	const refreshTitle = (ctx: ExtensionContext): void => {
+		if (!ctx.hasUI) return;
+		ctx.ui.setTitle(`${baseTitle(ctx)} ${STATUS_TEXT[status.state]}${promptSuffix()}`);
+	};
+
 	const setTitle = (ctx: ExtensionContext, next: StatusState): void => {
 		status.state = next;
-		if (!ctx.hasUI) return;
-		ctx.ui.setTitle(`pi - ${cwdBase(ctx)}${STATUS_TEXT[next]}`);
+		refreshTitle(ctx);
+	};
+
+	const rebuildPromptFromSession = (ctx: ExtensionContext): void => {
+		status.latestPrompt = getLatestUserPrompt(ctx.sessionManager.getBranch() as SessionEntry[]);
 	};
 
 	const clearTabTimeout = (): void => {
@@ -105,13 +188,31 @@ export default function (pi: ExtensionAPI) {
 		[
 			"session_start",
 			async (_event: SessionStartEvent, ctx: ExtensionContext) => {
+				rebuildPromptFromSession(ctx);
 				resetState(ctx, "new");
 			},
 		],
 		[
 			"session_switch",
-			async (event: SessionSwitchEvent, ctx: ExtensionContext) => {
-				resetState(ctx, event.reason === "new" ? "new" : "doneCommitted");
+			async (_event: SessionSwitchEvent, ctx: ExtensionContext) => {
+				rebuildPromptFromSession(ctx);
+				resetState(ctx, "new");
+			},
+		],
+		[
+			"message_start",
+			async (event: MessageStartEvent, ctx: ExtensionContext) => {
+				if (event.message.role !== "user") {
+					return;
+				}
+
+				const text = extractText(event.message.content);
+				if (!text) {
+					return;
+				}
+
+				status.latestPrompt = text;
+				setTitle(ctx, status.running ? "running" : "new");
 			},
 		],
 		[
@@ -167,8 +268,9 @@ export default function (pi: ExtensionAPI) {
 			"session_shutdown",
 			async (_event: SessionShutdownEvent, ctx: ExtensionContext) => {
 				clearTabTimeout();
+				status.latestPrompt = undefined;
 				if (!ctx.hasUI) return;
-				ctx.ui.setTitle(`pi - ${cwdBase(ctx)}`);
+				ctx.ui.setTitle(baseTitle(ctx));
 			},
 		],
 	] as const;

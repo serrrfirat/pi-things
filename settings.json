@@ -1,7 +1,4 @@
 {
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.5",
-  "defaultThinkingLevel": "xhigh",
   "packages": [
     "npm:pi-ask-user",
     {
@@ -81,6 +78,9 @@
     "npm:@alchemiststudios/pi-harness-skills",
     "npm:@weiping/pi-superpowers"
   ],
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "xhigh",
   "theme": "smyck",
   "quietStartup": false,
   "transport": "auto",

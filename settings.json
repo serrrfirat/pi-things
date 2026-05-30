@@ -53,7 +53,8 @@
     "npm:pi-mono-clear",
     "npm:pi-intercom",
     "npm:@juicesharp/rpiv-todo",
-    "npm:pi-token-burden"
+    "npm:pi-token-burden",
+    "npm:amp-themes"
   ],
   "defaultProvider": "anthropic",
   "defaultModel": "claude-sonnet-4-6",

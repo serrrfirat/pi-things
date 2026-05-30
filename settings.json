@@ -55,8 +55,8 @@
     "npm:pi-token-burden",
     "npm:amp-themes"
   ],
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-sonnet-4-6",
+  "defaultProvider": "nearai",
+  "defaultModel": "Qwen/Qwen3.6-35B-A3B-FP8",
   "defaultThinkingLevel": "medium",
   "theme": "amp-gruvbox-dark-hard",
   "quietStartup": false,

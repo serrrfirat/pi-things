@@ -58,7 +58,7 @@
   "defaultProvider": "anthropic",
   "defaultModel": "claude-sonnet-4-6",
   "defaultThinkingLevel": "medium",
-  "theme": "atom-one-dark",
+  "theme": "amp-gruvbox-dark-hard",
   "quietStartup": false,
   "transport": "auto",
   "hideThinkingBlock": false,

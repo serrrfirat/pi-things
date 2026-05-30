@@ -1,13 +1,13 @@
 ---
 name: code-review
-description: Multi-agent code review. Spawns 5 parallel reviewer subagents (Security, Bugs, Performance/Concurrency, Tests, Conventions) plus an intent analyzer. Reviews a GitHub PR (posts a single batched PR Review) OR self-reviews the current worktree (writes .review/findings.{json,md}).
+description: Multi-agent code review. Spawns 6 parallel reviewer subagents (Security, Bugs, Performance/Concurrency, Tests, Conventions, Structure/Maintainability) plus an intent analyzer. Reviews a GitHub PR (posts a single batched PR Review) OR self-reviews the current worktree (writes .review/findings.{json,md}).
 allowed-tools: Bash(gh api:*), Bash(gh pr diff:*), Bash(gh pr view:*), Bash(git rev-parse:*), Bash(git fetch:*), Bash(git worktree:*), Bash(git log:*), Bash(git diff:*), Bash(git symbolic-ref:*), Bash(git branch:*), Bash(find:*), Bash(realpath:*), Bash(jq:*), Bash(shasum:*), Bash(mkdir:*), Bash(grep:*), Read, Write, Edit, Glob, Agent
 argument-hint: "[owner/repo#N | --local | --staged | --since <ref>]"
 ---
 
 # Multi-agent code review (orchestrator)
 
-You are the orchestrator for a multi-agent code review. You spawn 5 specialized reviewer subagents in parallel via the `Agent` tool, aggregate their findings, deduplicate by file+line overlap, filter by confidence ≥ 50, and emit either a single batched GitHub PR Review (PR mode) or a structured findings file at `.review/` (Local mode).
+You are the orchestrator for a multi-agent code review. You spawn 6 specialized reviewer subagents in parallel via the `Agent` tool, aggregate their findings, deduplicate by file+line overlap, filter by confidence ≥ 50, and emit either a single batched GitHub PR Review (PR mode) or a structured findings file at `.review/` (Local mode).
 
 ## Reviewer file paths
 
@@ -113,9 +113,9 @@ find "$worktree_path" -maxdepth 4 \( -name CLAUDE.md -o -name AGENTS.md -o -name
 find "$worktree_path/.claude/rules" -name '*.md' 2>/dev/null
 ```
 
-**In a single message, call the `Agent` tool 5 times in parallel** — Claude Code dispatches them concurrently:
+**In a single message, call the `Agent` tool 6 times in parallel** — Claude Code dispatches them concurrently:
 
-For each of `security`, `bugs`, `performance`, `tests`, `conventions`:
+For each of `security`, `bugs`, `performance`, `tests`, `conventions`, `structure`:
 
 - **subagent_type:** `general-purpose`
 - **description:** `"<reviewer> code review"`
@@ -132,7 +132,7 @@ For each of `security`, `bugs`, `performance`, `tests`, `conventions`:
   <intent_summary JSON, or "(none)" if null>
   ```
 
-Each reviewer returns a JSON array of findings (or `[]`). If a reviewer's response can't be parsed as JSON: treat as failed, record in `reviewers_failed`, continue with remaining 4.
+Each reviewer returns a JSON array of findings (or `[]`). If a reviewer's response can't be parsed as JSON: treat as failed, record in `reviewers_failed`, continue with remaining 5.
 
 ## Aggregation
 
@@ -140,7 +140,7 @@ Each reviewer returns a JSON array of findings (or `[]`). If a reviewer's respon
 2. **Anchor gate (Conventions only):** drop findings with empty `anchor`.
 3. **Filter:** keep confidence ≥ 50.
 4. **Dedup by overlap:** bucket by `(normalized_path, line_range_overlap)`. Keep highest-confidence as primary; attach others as `also_flagged_by`.
-5. **Cap (PR mode only):** ≤ 15 inline comments (severity DESC, confidence DESC, category-balanced).
+5. **Cap (PR mode only):** ≤ 18 inline comments (severity DESC, confidence DESC, category-balanced).
 6. **Conventions severity cap:** demote above Medium unless anchor cites Critical-tier rule.
 
 ## Emit — PR mode
@@ -150,7 +150,7 @@ Build a single batched PR review via `POST /repos/<owner>/<repo>/pulls/<number>/
 - `commit_id`: `head_sha`
 - `event`: `REQUEST_CHANGES` (Critical/High ≥75%), `APPROVE` (zero findings), `COMMENT` (else)
 - `body`: starts with `<!-- code-review-skill:v1 -->`, then stats + per-category findings
-- `comments`: ≤ 15 inline (path, line, side, body with fix)
+- `comments`: ≤ 18 inline (path, line, side, body with fix)
 
 ```sh
 jq -n \
@@ -184,7 +184,7 @@ Ensure `.review/` is in `.gitignore`. Print console summary.
 | Cache-key match (Local, no --force) | Prompt: refresh / view / cancel |
 | Ephemeral worktree fails (PR) | Continue diff-only mode |
 | Intent analyzer fails | Continue with `intent_summary = null` |
-| One reviewer fails | Continue with 4; add to `reviewers_failed` |
+| One reviewer fails | Continue with 5; add to `reviewers_failed` |
 | All reviewers fail | "review could not be completed"; no posts/writes |
 | PR review POST fails | Surface error + still cleanup worktree |
 

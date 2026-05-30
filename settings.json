@@ -3,7 +3,6 @@
     "npm:pi-ask-user",
     "npm:pi-subagents",
     "npm:@juanibiapina/pi-extension-settings",
-    "npm:@guwidoe/pi-prompt-suggester",
     "npm:pi-extmgr",
     "npm:pi-librarian",
     "npm:pi-web-access",

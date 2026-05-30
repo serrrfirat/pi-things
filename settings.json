@@ -56,7 +56,7 @@
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
-  "defaultThinkingLevel": "xhigh",
+  "defaultThinkingLevel": "medium",
   "theme": "smyck",
   "quietStartup": false,
   "transport": "auto",

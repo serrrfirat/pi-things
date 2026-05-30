@@ -51,7 +51,8 @@
     "npm:@zenobius/pi-worktrees",
     "npm:pi-free",
     "npm:pi-mono-clear",
-    "npm:pi-intercom"
+    "npm:pi-intercom",
+    "npm:@juicesharp/rpiv-todo"
   ],
   "defaultProvider": "anthropic",
   "defaultModel": "claude-sonnet-4-6",

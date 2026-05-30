@@ -1,21 +1,12 @@
 {
   "packages": [
     "npm:pi-ask-user",
-    {
-      "source": "npm:oh-pi",
-      "extensions": [
-        "-pi-package/extensions/bg-process.ts",
-        "-pi-package/extensions/ant-colony/index.ts"
-      ]
-    },
     "npm:pi-subagents",
-    "npm:pi-markdown-preview",
     "npm:@juanibiapina/pi-extension-settings",
     "npm:@guwidoe/pi-prompt-suggester",
     "npm:pi-extmgr",
     "npm:pi-librarian",
     "npm:pi-web-access",
-    "npm:pi-interview",
     {
       "source": "git:https://github.com/hasit/pi-community-themes",
       "themes": [
@@ -38,24 +29,14 @@
         "!themes/tokyo-night.json"
       ]
     },
-    "npm:taskplane",
-    "npm:pi-mcp-adapter",
-    "npm:@plannotator/pi-extension",
-    "npm:pi-btw",
     "npm:pi-sync-config",
-    "npm:pi-ssh",
     "git:https://github.com/fluxgear/pi-thinking-steps@v0.9.6",
-    "npm:pi-memory-md",
-    "npm:@devkade/pi-plan",
     "npm:pi-simplify",
     "npm:pi-add-dir",
     "npm:@juanibiapina/pi-powerbar",
     "npm:@tmustier/pi-usage-extension",
     "npm:@tmustier/pi-raw-paste",
     "git:github.com/tintinweb/pi-manage-todo-list@b75c449aa85ce328e9a8b632f62bf642aed40359",
-    "git:github.com/davebcn87/pi-autoresearch@5a29db080131449edc6d25a6b351b12879063366",
-    "npm:@tmustier/pi-ralph-wiggum",
-    "npm:@every-env/compound-plugin",
     "git:github.com/javierportillo/pi-hackerman@63b0a3ef2c7b14985ffeb6cac44614ba59cd5693",
     {
       "source": "npm:@victor-software-house/pi-curated-themes",
@@ -65,18 +46,13 @@
         "!themes/gruvbox-dark-hard.json"
       ]
     },
-    "npm:pi-terminal-theme",
     "npm:glimpseui",
-    "npm:pi-claude-cli",
     "npm:pi-tool-display",
     "npm:@tintinweb/pi-tasks",
     "npm:@zenobius/pi-worktrees",
-    "npm:pi-claude-bridge",
     "npm:pi-free",
     "npm:pi-mono-clear",
-    "npm:pi-intercom",
-    "npm:@alchemiststudios/pi-harness-skills",
-    "npm:@weiping/pi-superpowers"
+    "npm:pi-intercom"
   ],
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",

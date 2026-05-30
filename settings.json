@@ -46,7 +46,6 @@
       ]
     },
     "npm:glimpseui",
-    "npm:pi-tool-display",
     "npm:@tintinweb/pi-tasks",
     "npm:@zenobius/pi-worktrees",
     "npm:pi-free",
